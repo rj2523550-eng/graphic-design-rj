@@ -1,391 +1,119 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DesignHub Portfolio</title>
+    <title>DesignHub | Creative Portfolio</title>
     <style>
-        /* CSS RESET & GENERAL STYLES */
         :root {
             --bg-dark: #121212;
             --bg-darker: #0d0d0d;
             --primary-purple: #8140ff;
             --secondary-purple: #c78aff;
-            --primary-pink: #f26cb0;
             --text-white: #ffffff;
             --text-grey: #a0a0a0;
-            --gradient-1: linear-gradient(135deg, #a74fff 0%, #ff6ecf 100%);
-            --gradient-orange: linear-gradient(135deg, #ffaf5e 0%, #ff8e44 100%);
-            --gradient-purple-blue: linear-gradient(135deg, #6c5eff 0%, #a76eff 100%);
-            --gradient-cyan: linear-gradient(135deg, #00c9b7 0%, #15e5d1 100%);
-            --gradient-orange-light: linear-gradient(135deg, #ffcd76 0%, #ffa552 100%);
+            --gradient-main: linear-gradient(135deg, #a74fff 0%, #ff6ecf 100%);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-white);
-            -webkit-font-smoothing: antialiased;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-white); line-height: 1.6; }
         a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        button { border: none; outline: none; cursor: pointer; background: none; }
 
-        /* HEADER */
+        /* Navigation */
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background-color: transparent;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px; position: sticky; top: 0; background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px); z-index: 100;
         }
+        .logo { font-weight: 800; font-size: 22px; display: flex; align-items: center; gap: 8px; }
+        .logo-icon { color: var(--primary-purple); }
+        .nav-btn { background: var(--primary-purple); padding: 8px 18px; border-radius: 20px; font-weight: 600; font-size: 14px; }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        /* Hero Section */
+        .hero { padding: 60px 25px; text-align: left; }
+        .badge { 
+            background: #1a0f2b; color: var(--secondary-purple); 
+            padding: 6px 12px; border-radius: 20px; font-size: 12px; 
+            display: inline-block; margin-bottom: 20px; 
         }
+        .hero-title { font-size: 45px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+        .gradient-text { background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-p { color: var(--text-grey); margin-bottom: 30px; font-size: 16px; max-width: 500px; }
+        .cta-group { display: flex; gap: 15px; }
+        .btn-main { background: var(--primary-purple); padding: 15px 25px; border-radius: 30px; font-weight: 700; }
+        .btn-outline { border: 1px solid #444; padding: 15px 25px; border-radius: 30px; font-weight: 700; }
 
-        .logo-icon {
-            color: var(--primary-purple);
-            font-size: 24px;
+        /* Services Grid */
+        .services { padding: 40px 20px; background: var(--bg-darker); }
+        .section-title { font-size: 28px; margin-bottom: 10px; text-align: center; }
+        .section-sub { text-align: center; color: var(--text-grey); margin-bottom: 40px; }
+        
+        .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .card { 
+            background: #1c1c24; padding: 30px; border-radius: 20px; 
+            transition: transform 0.3s; border: 1px solid transparent;
         }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary-purple); }
+        .card h3 { margin-bottom: 10px; font-size: 20px; }
+        .card p { color: var(--text-grey); font-size: 14px; }
 
-        .logo-text {
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        .btn-header {
-            background-color: var(--primary-purple);
-            color: var(--text-white);
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            padding: 40px 20px;
-            text-align: left;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background-color: #1a0f2b;
-            color: var(--secondary-purple);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        .hero-title {
-            font-size: 40px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .hero-title span {
-            display: block;
-        }
-
-        .hero-title .pink-text {
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-description {
-            font-size: 16px;
-            line-height: 1.6;
-            color: var(--text-grey);
-            margin-bottom: 30px;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn-purple {
-            background-color: var(--primary-purple);
-            color: var(--text-white);
-            padding: 15px 25px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 15px;
-        }
-
-        .btn-outline {
-            border: 1px solid var(--text-grey);
-            color: var(--text-white);
-            padding: 15px 25px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* SERVICES SECTION */
-        .services {
-            padding: 50px 20px;
-            background-color: var(--bg-darker);
-        }
-
-        .service-gradient-box {
-            width: 100%;
-            height: 250px;
-            background: var(--gradient-1);
-            border-radius: 20px;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .service-title {
-            text-align: center;
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .service-subtitle {
-            text-align: center;
-            font-size: 14px;
-            color: var(--text-grey);
-            margin-bottom: 30px;
-        }
-
-        .service-card-container {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 20px;
-        }
-
-        .service-card {
-            background-color: #17171e;
-            padding: 25px;
-            border-radius: 15px;
-        }
-
-        .service-card h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .service-card p {
-            font-size: 14px;
-            color: var(--text-grey);
-            line-height: 1.5;
-        }
-
-        /* RECENT WORK SECTION */
-        .recent-work {
-            padding: 50px 20px;
-        }
-
-        .recent-work-title {
-            text-align: center;
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .work-item {
-            aspect-ratio: 1 / 1;
-            border-radius: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .work-item.large {
-            grid-column: span 2;
-            aspect-ratio: 16 / 9;
-        }
-
-        .work-item.orange { background: var(--gradient-orange); }
-        .work-item.purple { background: var(--gradient-purple-blue); }
-        .work-item.cyan { background: var(--gradient-cyan); }
-        .work-item.orange-light { background: var(--gradient-orange-light); }
-        .work-item.purple-pink { background: var(--gradient-1); }
-
-        .item-placeholder {
-            width: 50px; height: 50px; border-radius: 50%; background-color: rgba(255,255,255,0.2);
-            color: var(--text-white); display: flex; align-items: center; justify-content: center; font-weight: bold;
-        }
-
-        .item-placeholder.rect { border-radius: 10px; width: 60px; height: 40px; }
-        .item-placeholder.tall { border-radius: 10px; width: 40px; height: 60px; }
-
-        /* CTA SECTION */
-        .cta {
-            padding: 60px 20px;
-            text-align: center;
+        /* Footer Nav (Mobile Style) */
+        .bottom-nav {
+            position: fixed; bottom: 0; width: 100%; background: #121212;
+            display: flex; justify-content: space-around; padding: 15px;
             border-top: 1px solid #222;
-        }
-
-        .cta-box {
-            background: var(--gradient-1);
-            padding: 40px 20px;
-            border-radius: 20px;
-        }
-
-        .cta-title {
-            font-size: 36px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
-
-        .cta-description {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        /* FOOTER / NAVIGATION */
-        .footer-nav {
-            display: flex;
-            justify-content: space-around;
-            padding: 15px;
-            background-color: rgba(18, 18, 18, 0.95);
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            border-top: 1px solid #222;
-        }
-
-        .footer-nav div {
-            width: 20px;
-            height: 20px;
-            border: 2px solid #555;
-            border-radius: 2px;
-        }
-
-        /* MEDIA QUERIES FOR LARGER SCREENS */
-        @media (min-width: 600px) {
-            .work-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .service-card-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <span class="logo-icon">&#x25A7;</span>
-            <span class="logo-text">DesignHub</span>
-        </div>
-        <button class="btn-header">Get Started</button>
+        <div class="logo"><span class="logo-icon">◆</span> DesignHub</div>
+        <a href="#" class="nav-btn">Get Started</a>
     </header>
 
     <section class="hero">
-        <div class="hero-badge">
-            <span class="sparkle">&#x2728;</span> Creative Design Studio
-        </div>
-        <h1 class="hero-title">
-            <span>Stunning</span>
-            <span>Graphic</span>
-            <span class="pink-text">Design</span>
-            <span>for Your</span>
-            <span>Brand</span>
-        </h1>
-        <p class="hero-description">
-            हम आपके ब्रांड को जीवंत बनाने के लिए शानदार ग्राफिक डिज़ाइन बनाते हैं। लोगो, बैनर, सोशल मीडिया और बहुत कुछ।
-        </p>
-        <div class="hero-btns">
-            <button class="btn-purple">Start Your Project →</button>
-            <button class="btn-outline">
-                <span class="play-icon">&#x25B6;</span> Watch Reel
-            </button>
+        <div class="badge">✨ Creative Design Studio</div>
+        <h1 class="hero-title">Stunning <br> Graphic <br> <span class="gradient-text">Design</span> <br> for Your Brand</h1>
+        <p class="hero-p">We craft high-quality visual identities that help your brand stand out. From logos to social media content.</p>
+        <div class="cta-group">
+            <a href="#services" class="btn-main">View Services</a>
+            <a href="#" class="btn-outline">Our Work</a>
         </div>
     </section>
 
-    <section class="services">
-        <div class="service-gradient-box">
-            </div>
-        <h2 class="service-title">Our Services</h2>
-        <p class="service-subtitle">हर तरह की डिज़ाइन ज़रूरतों के लिए प्रोफेशनल सॉल्यूशंस</p>
-        
-        <div class="service-card-container">
-            <div class="service-card">
+    <section class="services" id="services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-sub">Professional solutions for every design need</p>
+
+        <div class="grid">
+            <a href="logo-design.html" class="card">
                 <h3>Logo Design</h3>
-                <p>यूनिक और यादगार लोगो जो आपके ब्रांड की पहचान बने</p>
-            </div>
-            <div class="service-card">
+                <p>Build a unique and memorable identity for your business.</p>
+            </a>
+
+            <a href="banner-design.html" class="card">
                 <h3>Banner & Poster</h3>
-                <p>आकर्षक बैनर और पोस्टर जो ध्यान खींचें</p>
-            </div>
-            <div class="service-card">
+                <p>Eye-catching print and digital marketing materials.</p>
+            </a>
+
+            <a href="social-media.html" class="card">
                 <h3>Social Media</h3>
-                <p>सोशल मीडिया के लिए प्रोफेशनल ग्राफिक्स</p>
-            </div>
-            <div class="service-card">
+                <p>Custom graphics tailored for Instagram, Facebook, and LinkedIn.</p>
+            </a>
+
+            <a href="packaging-design.html" class="card">
                 <h3>Packaging</h3>
-                <p>प्रोडक्ट पैकेजिंग डिज़ाइन जो शेल्फ पर चमके</p>
-            </div>
+                <p>Product packaging designs that shine on the shelf.</p>
+            </a>
         </div>
     </section>
 
-    <section class="recent-work">
-        <h2 class="recent-work-title">Recent Work</h2>
-        
-        <div class="work-grid">
-            <div class="work-item orange">
-                <div class="item-placeholder">AB</div>
-            </div>
-            <div class="work-item purple">
-                <div class="item-placeholder rect">&#x2213;</div>
-            </div>
-            <div class="work-item cyan">
-                <div class="item-placeholder tall">&#x2213;</div>
-            </div>
-            <div class="work-item large orange-light">
-                <div class="item-placeholder rect">&#x2213;</div>
-            </div>
-            <div class="work-item purple-pink">
-                <div class="item-placeholder rect">&#x2213;</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta">
-        <div class="cta-box">
-            <h2 class="cta-title">Let's Create Something Amazing</h2>
-            <p class="cta-description">आज ही अपना प्रोजेक्ट शुरू करें और अपने ब्रांड को नई ऊंचाइयों पर ले जाएं</p>
-        </div>
-    </section>
-
-    <div class="footer-nav">
-        <div class="box"></div>
-        <div class="circle"></div>
-        <div class="arrow"></div>
-    </div>
+    <div style="height: 100px;"></div> <nav class="bottom-nav">
+        <span>🏠</span>
+        <span>🔍</span>
+        <span>👤</span>
+    </nav>
 
 </body>
 </html>
