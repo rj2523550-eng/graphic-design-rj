@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Maker - DesignHub</title>
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --primary-purple: #8140ff;
+            --card-bg: #1e1e1e;
+            --text-white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1a1a1a;
+            border-bottom: 1px solid #333;
+        }
+
+        .back-btn { color: var(--text-white); text-decoration: none; font-size: 18px; }
+
+        /* Canvas Area (Logo Preview) */
+        .editor-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        #logo-canvas {
+            width: 300px;
+            height: 300px;
+            background: white; /* Default logo background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            position: relative;
+        }
+
+        #logo-text {
+            color: #000;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            word-break: break-all;
+        }
+
+        /* Toolbar (Canva style controls) */
+        .toolbar {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 20px 20px 0 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label { font-size: 12px; color: #aaa; }
+
+        input[type="text"], input[type="color"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #2a2a2a;
+            color: white;
+        }
+
+        .btn-download {
+            background: var(--primary-purple);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="index.html" class="back-btn">✕ Exit</a>
+        <div style="font-weight: bold;">Logo Maker</div>
+        <div style="width: 40px;"></div> 
+    </div>
+
+    <div class="editor-container">
+        <div id="logo-canvas">
+            <div id="logo-text">YOUR LOGO</div>
+        </div>
+    </div>
+
+    <div class="toolbar">
+        <div class="control-group">
+            <label>Logo Text</label>
+            <input type="text" id="textInput" placeholder="Enter Brand Name" oninput="updateLogo()">
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+            <div class="control-group" style="flex: 1;">
+                <label>Text Color</label>
+                <input type="color" id="textColor" value="#000000" oninput="updateLogo()">
+            </div>
+            <div class="control-group" style="flex: 1;">
+                <label>BG Color</label>
+                <input type="color" id="bgColor" value="#ffffff" oninput="updateLogo()">
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label>Font Size</label>
+            <input type="range" id="fontSize" min="10" max="80" value="32" oninput="updateLogo()">
+        </div>
+
+        <button class="btn-download" onclick="alert('Feature Coming Soon: HTML to Image Export')">Download Logo</button>
+    </div>
+
+    <script>
+        function updateLogo() {
+            const text = document.getElementById('textInput').value;
+            const color = document.getElementById('textColor').value;
+            const bg = document.getElementById('bgColor').value;
+            const size = document.getElementById('fontSize').value;
+
+            const logoText = document.getElementById('logo-text');
+            const logoCanvas = document.getElementById('logo-canvas');
+
+            if(text) logoText.innerText = text;
+            logoText.style.color = color;
+            logoText.style.fontSize = size + "px";
+            logoCanvas.style.backgroundColor = bg;
+        }
+    </script>
+
+</body>
+</html>
+
